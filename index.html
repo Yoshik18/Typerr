@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Typing Game</title>
+  </head>
+  <body class="text-white text-center">
+    <header class="pb-3 pt-3 bg-info">
+      <h1>Typing Game</h1>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <p class="lead mt-2">
+            Please type the word within
+            <span id="seconds" class="text-success"></span>
+            seconds.
+          </p>
+          <h1 class="mb-5 display-2" id="current-word"></h1>
+          <input
+            type="text"
+            id="word-input"
+            class="form-control"
+            placeholder="Start Typing..."
+            autofocus
+          />
+          <div class="mb-4 mt-2" id="message"></div>
+          <h4>
+            Time Left:
+            <span id="time"></span>
+          </h4>
+          <h4>
+            Score:
+            <span id="score">0</span>
+          </h4>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-12 mx-auto">
+          <div class="card card-body bg-info">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+            necessitatibus velit eum facere. Eveniet fugiat beatae consectetur
+            quaerat aliquid quasi dolores tenetur quae officia dolorem?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
