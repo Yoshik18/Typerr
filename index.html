@@ -17,7 +17,7 @@
       <div class="navbar-brand">
         <h1>
           <a href="#"
-            ><img src="typer.png" alt="Typer" width="250px" height="80px"
+            ><img src="typer.png" alt="Typer" width="220px" height="80px"
           /></a>
         </h1>
       </div>
@@ -30,14 +30,12 @@
         </li>
       </ul>
     </nav>
-
     <div class="container">
       <div class="row">
         <div class="col-md-12 mx-auto">
           <p class="lead mt-2">
             Please type the word within
-            <span id="seconds" class="text-warning"></span>
-            seconds.
+            <span id="seconds" class="text-warning"></span> seconds.
           </p>
           <h1 class="mb-5 display-2" id="current-word"></h1>
           <input
@@ -47,17 +45,10 @@
             placeholder="Start Typing..."
           />
           <h5 class="mb-4 mt-2" id="message"></h5>
-          <h4>
-            Time Left:
-            <span id="time"></span>
-          </h4>
-          <h4>
-            Score:
-            <span id="score">0</span>
-          </h4>
+          <h4>Time Left: <span id="time"></span></h4>
+          <h4>Score: <span id="score">0</span></h4>
         </div>
       </div>
-
       <div class="row mt-5">
         <div class="col-md-12 mx-auto">
           <div class="card card-body bg-info">
@@ -78,11 +69,11 @@
         </div>
       </div>
     </div>
-
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-      defer
+      async
     ></script>
-    <script src="app.js" defer></script>
+    <script src="words.js" async></script>
+    <script src="app.js" async></script>
   </body>
 </html>
