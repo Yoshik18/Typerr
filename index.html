@@ -5,20 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="bootstrap.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Dokdo"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Typing Game</title>
+    <title>Typer - Fun Speed Typing Game</title>
   </head>
   <body class="text-white text-center">
-    <header class="pb-3 pt-3 bg-info">
-      <h1>Typing Game</h1>
-    </header>
+    <nav class="navbar navbar-expand-lg bg-info pl-5">
+      <div class="navbar-brand">
+        <h1><a href="#">Typer</a></h1>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <button class="btn btn-secondary" id="start">Start</button>
+        </li>
+        <li class="nav-item ml-4">
+          <button class="btn btn-secondary" id="high-score">High Score</button>
+        </li>
+      </ul>
+    </nav>
 
     <div class="container">
       <div class="row">
         <div class="col-md-12 mx-auto">
           <p class="lead mt-2">
             Please type the word within
-            <span id="seconds" class="text-success"></span>
+            <span id="seconds" class="text-warning"></span>
             seconds.
           </p>
           <h1 class="mb-5 display-2" id="current-word"></h1>
@@ -27,9 +41,8 @@
             id="word-input"
             class="form-control"
             placeholder="Start Typing..."
-            autofocus
           />
-          <div class="mb-4 mt-2" id="message"></div>
+          <h5 class="mb-4 mt-2" id="message"></h5>
           <h4>
             Time Left:
             <span id="time"></span>
@@ -44,14 +57,28 @@
       <div class="row mt-5">
         <div class="col-md-12 mx-auto">
           <div class="card card-body bg-info">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-            necessitatibus velit eum facere. Eveniet fugiat beatae consectetur
-            quaerat aliquid quasi dolores tenetur quae officia dolorem?
+            Hey there fellas, Typer is a fun speed typing game. In order to
+            score you need to type the word specified in the given amount of
+            seconds!! As your score the the difficulty of the game increases,
+            watch the time :). If you fail to type the word in given amount of
+            time you lose and your score resets to zero. To restart the game
+            just reload the web page. You can also view your high/best score,
+            after the game ends the button will automatically appear on the
+            screen.
+            <p>Keep Typing ;)</p>
+          </div>
+          <div class="card-footer">
+            Made with <span style="color: red;">&hearts;</span> by
+            <a href="https://yoshikkarnawat.tk/" target="_blank">Yoshik</a>
           </div>
         </div>
       </div>
     </div>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+      defer
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>
