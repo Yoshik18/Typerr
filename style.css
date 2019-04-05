@@ -1,31 +1,44 @@
 ::selection {
-  color: white;
-  background-color: #20c997;
+    color: white;
+    background-color: #20c997;
 }
+
 .navbar-brand h1 {
-  font-family: "Baloo Chettan", cursive;
-  font-weight: 600;
-  font-size: 50px;
+    font-family: "Baloo Chettan", cursive;
+    font-weight: 600;
+    font-size: 50px;
 }
+
 a {
-  color: white;
+    color: white;
 }
+
 a:hover {
-  color: aqua;
-  text-decoration: none;
+    color: aqua;
+    text-decoration: none;
 }
+
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 body {
-  background-color: rgb(39, 104, 129);
+    background-color: rgb(39, 104, 129);
 }
+
 .btn {
-  width: 130px;
-  height: 45px;
-  font-size: 20px;
+    width: 130px;
+    height: 40px;
+    font-size: 18px;
+    background-color: steelblue;
+    border: none;
+    border-radius: 30px;
 }
+.btn:hover{
+    background-color: deepskyblue;
+}
+
 #high-score {
-  display: none;
+    display: none;
 }
