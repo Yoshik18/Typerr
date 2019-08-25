@@ -6,47 +6,121 @@ const level = {
     hard: 3,
     extreme: 2
 };
-let isPlaying, high, currentLevel = level.easy,
-    time = currentLevel,
-    score = 0;
-const seconds = document.querySelector("#seconds"),
-    currentWord = document.querySelector("#current-word"),
-    wordInput = document.querySelector("#word-input"),
-    message = document.querySelector("#message"),
-    timeDisplay = document.querySelector("#time"),
-    scoreDisplay = document.querySelector("#score");
+
+let currentLevel = level.easy;
+let time = currentLevel;
+let score = 0;
+let isPlaying;
+let high;
+
+const seconds = document.querySelector("#seconds");
+const currentWord = document.querySelector("#current-word");
+const wordInput = document.querySelector("#word-input");
+const message = document.querySelector("#message");
+const timeDisplay = document.querySelector("#time");
+const scoreDisplay = document.querySelector("#score");
 
 function init() {
-    showWord(words), wordInput.focus(), wordInput.addEventListener("input", startMatch), setInterval(countDown, 1e3), setInterval(checkStatus, 50), document.querySelector("#start").style = "display: none"
+    showWord(words);
+    wordInput.focus();
+    wordInput.addEventListener("input", startMatch);
+    setInterval(countDown, 1000);
+    setInterval(checkStatus, 50);
+    document.querySelector("#start").style = "display: none";
 }
-
 function startMatch() {
-    matchWord() && (isPlaying = !0, time = currentLevel, showWord(words), wordInput.value = "", score++, highScore()), scoreDisplay.innerHTML = -1 === score ? 0 : score, score > 9 && (currentLevel = level.medium, seconds.innerHTML = 4), score > 19 && (currentLevel = level.hard, seconds.innerHTML = 2), score > 34 && (currentLevel = level.extreme, seconds.innerHTML = 1)
-}
+    if (matchWord()) {
+        isPlaying = true;
+        time = currentLevel;
+        showWord(words);
+        wordInput.value = "";
+        score++;
+        highScore();
+    }
 
+    if (score === -1) {
+        scoreDisplay.innerHTML = 0;
+    } else {
+        scoreDisplay.innerHTML = score;
+    }
+
+    if (score > 9) {
+        currentLevel = level.medium;
+        seconds.innerHTML = 4;
+    }
+    if (score > 19) {
+        currentLevel = level.hard;
+        seconds.innerHTML = 2;
+    }
+    if (score > 34) {
+        currentLevel = level.extreme;
+        seconds.innerHTML = 1;
+    }
+}
 function matchWord() {
-    return wordInput.value === currentWord.innerHTML ? (message.innerHTML = "Correct!", message.style = "color: #07ea07", wordInput.style = "border-color: #07ea07", !0) : (message.innerHTML = "", !1)
+    if (wordInput.value === currentWord.innerHTML) {
+        message.innerHTML = `Correct!`;
+        message.style = "color: #07ea07";
+        wordInput.style = "border-color: #07ea07";
+        return true;
+    } else {
+        message.innerHTML = "";
+        return false;
+    }
 }
-
-function showWord(e) {
-    const r = Math.floor(Math.random() * e.length);
-    currentWord.innerHTML = e[r]
+function showWord(words) {
+    const rand = Math.floor(Math.random() * words.length);
+    currentWord.innerHTML = words[rand];
 }
-
 function countDown() {
-    time > 0 ? time-- : 0 === time && (isPlaying = !1), timeDisplay.innerHTML = time
+    if (time > 0) {
+        time--;
+    } else if (time === 0) {
+        isPlaying = false;
+    }
+    timeDisplay.innerHTML = time;
 }
-
 function checkStatus() {
-    isPlaying || 0 !== time || (score > 0 ? (document.querySelector("#high-score").style = "display: block", message.innerHTML = "Game Over!! Please reload the page to start a new game.", message.style = "color: red", wordInput.style = "border-color: red", score = -1, currentLevel = level.easy, seconds.innerHTML = 7, wordInput.disabled = !0) : 0 === score && (message.innerHTML = "Game Over!! Please reload the page to start a new game.", message.style = "color: red", wordInput.style = "border-color: red", score = -1, currentLevel = level.easy, seconds.innerHTML = 7, wordInput.disabled = !0, document.querySelector("#high-score").style = "display: none"))
+    if (!isPlaying && time === 0) {
+        if (score > 0) {
+            document.querySelector("#high-score").style = "display: block";
+            message.innerHTML = `Game Over!! Please reload the page to start a new game.`;
+            message.style = "color: red";
+            wordInput.style = "border-color: red";
+            score = -1;
+            currentLevel = level.easy;
+            seconds.innerHTML = 7;
+            wordInput.disabled = true;
+        } else if (score === 0) {
+            message.innerHTML = `Game Over!! Please reload the page to start a new game.`;
+            message.style = "color: red";
+            wordInput.style = "border-color: red";
+            score = -1;
+            currentLevel = level.easy;
+            seconds.innerHTML = 7;
+            wordInput.disabled = true;
+            document.querySelector("#high-score").style = "display: none";
+        }
+    }
 }
 
 function highScore() {
-    let e;
-    null === localStorage.getItem("scores") ? e = [] : (e = JSON.parse(localStorage.getItem("scores")), high = Math.max(...e)), e.push(score), localStorage.setItem("scores", JSON.stringify(e)), document.querySelector("#high-score").addEventListener("click", function() {
+    let scores;
+    if (localStorage.getItem("scores") === null) {
+        scores = [];
+    } else {
+        scores = JSON.parse(localStorage.getItem("scores"));
+        high = Math.max(...scores);
+    }
+    scores.push(score);
+    localStorage.setItem("scores", JSON.stringify(scores));
+
+    document.querySelector("#high-score").addEventListener("click", function () {
         swal("Good job typer!", `Your High Score Is ${high}`, "success", {
             button: "Ohh Yeaahh!!"
-        })
-    })
+        });
+    });
 }
+
+
 seconds.innerHTML = 7;
